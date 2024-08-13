@@ -1,17 +1,14 @@
-import Logout from "@mui/icons-material/Logout";
+import NotificationsIcon from "@mui/icons-material/Notifications";
 
-import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
-import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
 import Tooltip from "@mui/material/Tooltip";
+import Typography from "@mui/material/Typography";
 
 import React from "react";
 
-function AccountProfiles() {
+function Notification() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -26,33 +23,24 @@ function AccountProfiles() {
       <Tooltip title="Cài đặt tài khoản">
         <IconButton
           onClick={handleClick}
-          aria-controls={open ? "menu-account-profiles" : undefined}
+          size="small"
+          aria-controls={open ? "notification" : undefined}
           aria-haspopup="true"
           aria-expanded={open ? "true" : undefined}
         >
-          <Avatar sx={{ width: 32, height: 32 }} alt="Tài khoản" />
+          <NotificationsIcon />
         </IconButton>
       </Tooltip>
       <Menu
-        id="menu-account-profiles"
+        id="notification"
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose}>
-          <Avatar sx={{ width: 32, height: 32, mr: 2 }} /> Thông tin tài khoản
-        </MenuItem>
-        <Divider />
-
-        <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <Logout fontSize="small" />
-          </ListItemIcon>
-          Logout
-        </MenuItem>
+        <Typography>Thông báo</Typography>
       </Menu>
     </Box>
   );
 }
 
-export default AccountProfiles;
+export default Notification;

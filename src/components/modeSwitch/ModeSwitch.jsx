@@ -2,7 +2,6 @@ import LightModeIcon from "@mui/icons-material/LightMode";
 import NightsStayIcon from "@mui/icons-material/NightsStay";
 import SettingsIcon from "@mui/icons-material/Settings";
 
-import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import { useColorScheme } from "@mui/material/styles";
@@ -31,26 +30,22 @@ function ModeSwitch() {
   };
 
   return (
-    <Box sx={{ ml: 2 }}>
-      <Tooltip
-        title={`Nút chuyển đổi chế độ. Chế độ hiện tại: ${getModeText()}`}
+    <Tooltip title={`Nút chuyển đổi chế độ. Chế độ hiện tại: ${getModeText()}`}>
+      <Button
+        onClick={handleModeChange}
+        sx={{
+          color: (theme) => theme.palette.active,
+          borderRadius: "50%",
+          width: "32px",
+          height: "32px",
+          minWidth: 0,
+        }}
       >
-        <Button
-          onClick={handleModeChange}
-          sx={{
-            color: (theme) => theme.palette.active,
-            borderRadius: "50%",
-            width: "34px",
-            height: "34px",
-            minWidth: 0,
-          }}
-        >
-          {mode === "light" && <LightModeIcon />}
-          {mode === "dark" && <NightsStayIcon />}
-          {mode === "system" && <SettingsIcon />}
-        </Button>
-      </Tooltip>
-    </Box>
+        {mode === "light" && <LightModeIcon />}
+        {mode === "dark" && <NightsStayIcon />}
+        {mode === "system" && <SettingsIcon />}
+      </Button>
+    </Tooltip>
   );
 }
 
